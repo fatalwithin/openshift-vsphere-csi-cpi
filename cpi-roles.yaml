@@ -1,0 +1,85 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: system:cloud-controller-manager
+rules:
+  - verbs:
+      - create
+      - patch
+      - update
+    apiGroups:
+      - ""
+    resources:
+      - events
+
+  - verbs:
+      - "*"
+    apiGroups:
+      - ""
+    resources:
+      - nodes
+
+  - verbs:
+      - patch
+    apiGroups:
+      - ""
+    resources:
+      - nodes/status
+
+  - verbs:
+      - list
+      - patch
+      - update
+      - watch
+    apiGroups:
+      - ""
+    resources:
+      - services
+
+  - verbs:
+      - patch
+    apiGroups:
+      - ""
+    resources:
+      - services/status
+
+  - verbs:
+      - create
+      - get
+      - list
+      - watch
+      - update
+    apiGroups:
+      - ""
+    resources:
+      - serviceaccounts
+
+  - verbs:
+      - get
+      - list
+      - update
+      - watch
+    apiGroups:
+      - ""
+    resources:
+      - persistentvolumes
+
+  - verbs:
+      - create
+      - get
+      - list
+      - watch
+      - update
+    apiGroups:
+      - ""
+    resources:
+      - endpoints
+
+  - verbs:
+      - get
+      - list
+      - watch
+    apiGroups:
+      - ""
+    resources:
+      - secrets
